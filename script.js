@@ -81,6 +81,9 @@ showData = (title, titleEnglish, dateAiring, totalEpisode, genre,
     const airing = document.querySelectorAll('.date');
     const episode = document.querySelectorAll('.total.episode');
     const synopsis = document.querySelectorAll('.Synopsis');
+    const genres = document.querySelectorAll('.genre');
+    const studios = document.querySelectorAll('#studio');
+    const scores = document.querySelectorAll('.score')
     titleJapan.forEach((element, index) => {
         element.textContent = title[index];
     })
@@ -99,6 +102,25 @@ showData = (title, titleEnglish, dateAiring, totalEpisode, genre,
     synopsis.forEach((element, index) => {
         element.textContent = sinopsis[index];
     })
+    for (let i = 0; i < genres.length; i++) {
+        for (let j = 0; j < genre[i].length; j++) {
+            const a = document.createElement("a");
+            genres[i].appendChild(a);
+            genres[i].children[j].textContent = genre[i][j].name;
+            genres[i].children[j].classList.add('genres');
+            console.log(genres[i].children[j]);
+        }
+    }
+    studios.forEach((element, index) => {
+        element.textContent = studio[index];
+    })
+    scores.forEach((element, index) => {
+        if (score[index] === null) {
+            score[index] = 'unoknown';
+        }
+        element.textContent = score[index];
+    })
+    console.log(score);
 }
 
 getData(url);
