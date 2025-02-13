@@ -37,9 +37,11 @@ processData = (data) => {
         //Memasukkan data ke array totalEpisode
         const episode = array.episodes + " eps" + ", " + array.duration;
         totalEpisode.push(episode);
+        if (array.episodes === null) {
+            array.episodes = "?";
+        }
         const episodeType = array.type + "(" + array.episodes + ")";
         type.push(episodeType);
-
 
         // Memasukkan data ke array genre
         genre.push(array.genres);
@@ -84,6 +86,7 @@ showData = (title, titleEnglish, dateAiring, totalEpisode, genre,
     const genres = document.querySelectorAll('.genre');
     const studios = document.querySelectorAll('#studio');
     const scores = document.querySelectorAll('.score')
+    const types = document.querySelectorAll('.episode h4');
     titleJapan.forEach((element, index) => {
         element.textContent = title[index];
     })
@@ -119,6 +122,9 @@ showData = (title, titleEnglish, dateAiring, totalEpisode, genre,
             score[index] = 'unoknown';
         }
         element.textContent = score[index];
+    })
+    types.forEach((element, index) => {
+        element.textContent = type[index];
     })
     console.log(score);
 }
