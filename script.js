@@ -87,6 +87,7 @@ showData = (title, titleEnglish, dateAiring, totalEpisode, genre,
     const studios = document.querySelectorAll('#studio');
     const scores = document.querySelectorAll('.score')
     const types = document.querySelectorAll('.episode h4');
+    const themes = document.querySelectorAll('.themes');
     titleJapan.forEach((element, index) => {
         element.textContent = title[index];
     })
@@ -111,7 +112,7 @@ showData = (title, titleEnglish, dateAiring, totalEpisode, genre,
             genres[i].appendChild(a);
             genres[i].children[j].textContent = genre[i][j].name;
             genres[i].children[j].classList.add('genres');
-            console.log(genres[i].children[j]);
+            // console.log(genres[i].children[j]);
         }
     }
     studios.forEach((element, index) => {
@@ -126,7 +127,17 @@ showData = (title, titleEnglish, dateAiring, totalEpisode, genre,
     types.forEach((element, index) => {
         element.textContent = type[index];
     })
-    console.log(score);
+    for (let i = 0; i < themes.length; i++) {
+        const ul = document.createElement("ul");
+        for (let j = 0; j < theme[i].length; j++) {
+            const li = document.createElement("li");
+            li.textContent = theme[i][j].name;
+            ul.appendChild(li);
+            li.classList.add('themes');
+        }
+        themes[i].appendChild(ul);
+    }
+    // console.log(score);
 }
 
 getData(url);
